@@ -1,0 +1,103 @@
+syntax = "proto3";
+
+option java_package = "vn.iuh.grpc";
+option java_multiple_files = true;
+
+service StudentService {
+  rpc SaveStudent (StudentRequest) returns (StudentResponse);
+  rpc CheckUsersExist (CheckUsersExistRequest) returns (CheckUsersExistResponse);
+  rpc GetUserById  (GetUserByIdRequest) returns (GetUserByIdResponse);
+  rpc FetcherUserById (FetcherUserByIdRequest) returns (FetcherUserByIdResponse);
+  rpc GetUserByIdAnyRole (GetUserByIdRequest) returns (GetUserByIdResponse);
+
+}
+
+message StudentRequest {
+  string username = 1;
+  string fullName = 2;
+  string email = 3;
+  string dateOfBirth = 4;
+  bool gender = 5;
+  string program = 6;
+  string facultyName = 7;
+  string cohort = 8;
+  string className = 9;
+}
+message StudentResponse {
+  string id = 1;
+  string username = 2;
+  string fullName = 3;
+  string email = 4;
+  string dateOfBirth = 5;
+  bool gender = 6;
+  string program = 7;
+  string facultyName = 8;
+  string cohort = 9;
+  string className = 10;
+}
+message CheckUsersExistRequest {
+  repeated string userIds = 1;
+}
+
+message CheckUsersExistResponse {
+  repeated string existingUserIds = 1;
+}
+
+message GetUserByIdRequest {
+  string userId = 1;
+}
+message GetUserByIdResponse {
+  string id = 1;
+  string username = 2;
+  string fullName = 3;
+  string email = 4;
+  string organization = 5;
+  string position = 6;
+  string facultyName = 7;
+  repeated string degrees = 8;
+  bool isInternal = 9;
+  string facultyCode = 10;
+  string personCode = 11;
+
+}
+
+message FetcherUserByIdRequest{
+  string id = 1;
+}
+
+message FetcherUserByIdResponse {
+  string id = 1;
+  string username = 2;
+  string fullName = 3;
+  string email = 4;
+  string dateOfBirth = 5;
+  bool gender = 6;
+  string facultyId = 7;
+  bool enabled = 8;
+  repeated string roles = 9;
+  repeated string permissions = 10;
+
+  // student
+  string programId = 11;
+  string cohortId = 12;
+  string cohortName = 13;
+  int64 cohortGraduationYear = 14;
+  int64 cohortIntakeYear = 15;
+  string majorId = 16;
+  string majorName = 17;
+  string classGroupId = 18;
+  string className = 19;
+  repeated string milestones = 20;
+  string registeredTopicId = 21;
+  string topicTitle = 22;
+  string proposalId = 23;
+  string thesisId = 24;
+
+  // supervisor
+  string organization = 25;
+  string position = 26;
+  repeated string degrees = 27;
+  bool isInternal = 28;
+  bool isApproved = 29;
+
+}

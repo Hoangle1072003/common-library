@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+option java_package = "vn.iuh.grpc";
+option java_multiple_files = true;
+
+service ClassGroupService {
+  rpc FindByCode (ClassGroupRequest) returns (ClassGroupResponse);
+  rpc FindById (ClassGroupFIndByIdRequest) returns (ClassGroupFindByIdResponse);
+}
+message ClassGroupRequest {
+  string code = 1;
+}
+message ClassGroupResponse {
+  string id = 1;
+  string name = 2;
+  string code = 3;
+  string cohort = 4;
+  string major = 5;
+  bool enabled = 6;
+}
+
+message  ClassGroupFIndByIdRequest {
+  string id = 1;
+}
+
+message ClassGroupFindByIdResponse {
+  string id = 1;
+  string name = 2;
+  string code = 3;
+  string cohortId = 4;
+  string majorId = 5;
+  bool enabled = 6;
+}

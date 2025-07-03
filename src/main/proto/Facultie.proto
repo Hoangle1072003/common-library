@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+option java_package = "vn.iuh.grpc";
+option java_multiple_files = true;
+
+service FacultyService {
+  rpc FindByName (FacultyRequest) returns (FacultyResponse);
+  rpc FindById (FacultyFindByIdRequest) returns (FacultyFindByIdResponse);
+}
+message FacultyRequest {
+  string name = 1;
+}
+message FacultyResponse {
+  string id = 1;
+  string code = 2;
+  string name = 3;
+}
+
+message FacultyFindByIdRequest {
+  string id = 1;
+}
+message FacultyFindByIdResponse {
+  string id = 1;
+  string code = 2;
+  string name = 3;
+  string description = 4;
+  bool is_active = 5;
+}

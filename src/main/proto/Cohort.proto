@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option java_package = "vn.iuh.grpc";
+option java_multiple_files = true;
+
+service CohortService {
+  rpc FindByName (CohortRequest) returns (CohortResponse);
+}
+
+message CohortRequest {
+  string name = 1;
+}
+
+message CohortResponse {
+  string id = 1;
+  string name = 2;
+  int32 intakeYear = 3;
+  int32 graduationYear = 4;
+}
