@@ -5,8 +5,8 @@ plugins {
     id("com.google.protobuf") version "0.9.4"
 }
 
-group = "vn.iuh.fit"
-version = "1.0-SNAPSHOT"
+group = "com.github.Hoangle1072003"
+version = "1.0.0"
 
 repositories {
     mavenCentral()
