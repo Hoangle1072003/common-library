@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "com.github.Hoangle1072003"
-version = "1.0.0"
+version = "1.0.3" 
 
 repositories {
     mavenCentral()
@@ -41,12 +41,13 @@ protobuf {
     }
 }
 
-tasks.getByName<Jar>("jar") {
-    enabled = true
+tasks.named<org.springframework.boot.gradle.tasks.bundling.BootJar>("bootJar") {
+    enabled = false
 }
 
-tasks.getByName<org.springframework.boot.gradle.tasks.bundling.BootJar>("bootJar") {
-    enabled = false
+tasks.named<Jar>("jar") {
+    enabled = true
+    archiveClassifier.set("") 
 }
 
 publishing {
@@ -54,9 +55,9 @@ publishing {
         create<MavenPublication>("mavenJava") {
             from(components["java"])
 
-            groupId = "com.github.hoangle1072003"
+            groupId = "com.github.Hoangle1072003"
             artifactId = "common-library"
-            version = "1.0.1"
+            version = "1.0.3"
 
             pom {
                 name.set("common-library")
@@ -78,12 +79,6 @@ publishing {
     }
 }
 
-
-
 tasks.withType<Test> {
-    useJUnitPlatform()
-}
-
-tasks.test {
     useJUnitPlatform()
 }
