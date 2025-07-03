@@ -41,6 +41,43 @@ protobuf {
     }
 }
 
+tasks.getByName<Jar>("jar") {
+    enabled = true
+}
+
+tasks.getByName<org.springframework.boot.gradle.tasks.bundling.BootJar>("bootJar") {
+    enabled = false
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("mavenJava") {
+            from(components["java"])
+
+            groupId = "com.github.hoangle1072003"
+            artifactId = "common-library"
+            version = "1.0.1"
+
+            pom {
+                name.set("common-library")
+                description.set("Shared library for Spring Boot microservices")
+                licenses {
+                    license {
+                        name.set("Apache License, Version 2.0")
+                        url.set("http://www.apache.org/licenses/LICENSE-2.0")
+                    }
+                }
+                developers {
+                    developer {
+                        id.set("hoangle1072003")
+                        name.set("Hoang Le")
+                    }
+                }
+            }
+        }
+    }
+}
+
 
 
 tasks.withType<Test> {
